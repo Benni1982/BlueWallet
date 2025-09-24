@@ -5,6 +5,7 @@ workflows:
     environment:
       vars:
         PACKAGE_NAME: "com.bluewallet.app"
+        GRADLE_OPTS: "-Xmx4096m"
       node: 18.16.0
       java: 17
     scripts:
