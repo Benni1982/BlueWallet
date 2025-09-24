@@ -1,0 +1,20 @@
+workflows:
+  build-android-release:
+    name: Build Android Release APK
+    max_build_duration: 30
+    environment:
+      vars:
+        PACKAGE_NAME: "com.bluewallet.app"
+        GRADLE_OPTS: "-Xmx4096m"
+      node: 18.16.0
+      java: 17
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Build Android Release APK
+        script: |
+          cd android
+          ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/apk/release/app-release.apk
