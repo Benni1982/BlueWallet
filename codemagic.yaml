@@ -6,14 +6,12 @@ workflows:
       vars:
         PACKAGE_NAME: "com.bluewallet.app"
         GRADLE_OPTS: "-Xmx4096m"
+        CM_KEYSTORE: Encrypted()  # ← wird aus Environment geladen
+        CM_KEYSTORE_PASSWORD: Encrypted()
+        CM_KEY_ALIAS: Encrypted()
+        CM_KEY_PASSWORD: Encrypted()
       node: 18.16.0
       java: 17
-
-    android_signing:
-      - keystore: $CM_KEYSTORE
-        keystore_password: $CM_KEYSTORE_PASSWORD
-        key_alias: $CM_KEY_ALIAS
-        key_password: $CM_KEY_PASSWORD
 
     scripts:
       - name: Install dependencies
