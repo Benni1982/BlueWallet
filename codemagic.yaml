@@ -6,7 +6,7 @@ workflows:
       vars:
         PACKAGE_NAME: "com.bluewallet.app"
       node: 18.16.0
-      java: 11
+      java: 17
     scripts:
       - name: Install dependencies
         script: |
