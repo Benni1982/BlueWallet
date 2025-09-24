@@ -8,13 +8,21 @@ workflows:
         GRADLE_OPTS: "-Xmx4096m"
       node: 18.16.0
       java: 17
+
+    android_signing:
+      - keystore: $CM_KEYSTORE
+        keystore_password: $CM_KEYSTORE_PASSWORD
+        key_alias: $CM_KEY_ALIAS
+        key_password: $CM_KEY_PASSWORD
+
     scripts:
       - name: Install dependencies
         script: |
           npm install
-      - name: Build Android Release APK
+      - name: Build signed release APK
         script: |
           cd android
           ./gradlew assembleRelease
+
     artifacts:
       - android/app/build/outputs/apk/release/*.apk
